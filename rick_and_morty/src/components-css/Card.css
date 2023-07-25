@@ -1,0 +1,12 @@
+.Card {
+    text-align: center;
+
+    display: block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-width: 1em;
+    border-radius: 2em;
+    border: solid;
+    border-color: blueviolet;
+    background-color: aqua;
+ }

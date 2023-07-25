@@ -1,12 +1,14 @@
+import React from "react";
+import "../components-css/Cards.css";
 import Card from "./Card";
 
-export default function Cards({characters}) {
+function Cards({ characters , onClose }) {
   return (
-    <div>
+    <div className="Cards">
       {characters.map(
-        ({ id, name, species, gender, image, origin, status, onClose }) => {
+        ({ id, name, species, gender, image, origin, status}) => {
           return (
-            <Card 
+            <Card
               key={id}
               id={id}
               name={name}
@@ -15,7 +17,9 @@ export default function Cards({characters}) {
               image={image}
               origin={origin}
               status={status}
-              onClose={() => window.alert('Emulamos que se cierra la card')}
+              // onClose={() => window.alert('Close card emulation')}
+              // Pass the onClose function and the character ID to the Card component
+              onClose={() => onClose(id)}
             ></Card>
           );
         }
@@ -23,4 +27,4 @@ export default function Cards({characters}) {
     </div>
   );
 }
-
+export default Cards;
