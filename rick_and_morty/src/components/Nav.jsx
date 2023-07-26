@@ -10,11 +10,11 @@ function Nav({ onSearch, randomize }) {
 
   return (
     <div className="Nav">
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar onSearch={handleSearch} randomize={randomize}/>
       {/* randomize button that recieves by props the function randomize and executes it */}
       
       {/* NOTE: change the icon later */}
-      <button className="randomize" onClick={randomize}> Generate Random Character </button>
+      {/* <button className="randomize" onClick={randomize}> Generate Random Character </button> */}
     </div>
   );
 }

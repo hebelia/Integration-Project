@@ -1,65 +1,116 @@
-/* .Card {
-    text-align: center;
-    font-size: smaller;
-
-    display: flexbox;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border-width: 1em;
-    border-radius: 2em;
-    border: solid;
-    border-color: blueviolet;
-    background-color: transparent transparent transparent;
-
- }
- img{
-    max-width: fit-content;
-    border-radius: 2em;
- } */
-
-/* Card.css */
 .Card {
-  background-color: #f5f5f5;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
+  /* position property and relative value allow absolute positioning within this container */
+  position: relative;
+  width: 250px;
+  height: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+  /* for hover effects */
+  display: flexbox;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transition: box-shadow 0.3s ease;
+  transition: 0.2s ease-in, transform 0.2s ease-in;
 }
 
-.Card:hover {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+/*NOTE: make the name of the card have a position at the bottom while not hovered and change to the top on hover (when the infobox becomes visible) */
+
+.Card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* pushes the image to the background */
+  z-index: -1;
 }
 
 .Card button {
-  background-color: #ff3f34;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.644);
+  color: greenyellow;
+  border: solid 1px;
+  border-color: greenyellow;
+  border-radius: 2em;
   cursor: pointer;
-  /* position: absolute; */
-  top: 8px;
-  right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.Card h2 {
   font-size: 18px;
-  margin: 8px 0;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  /*lower z-index for the close button*/
+  z-index: 1;
+  /*transition for smooth animation */
+  transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+}
+.Card button:hover {
+  color: white;
+  border-color: white;
+  transform: scale(1.25);
+}
+.Card .InfoBox h2 {
+  font-size: 0.8em;
+  color: greenyellow;
+}
+.Card .Top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* position relative to fix the unwanted layering of button and name */
+  position: relative;
 }
 
-.Card .img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
+.Name {
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  background-color: rgba(255, 255, 255, 0.747);
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: greenyellow;
+  background-color: rgba(0, 0, 0, 0.644);
+  /* higher z-index to make the .Name appear above the close button */
+  z-index: 0;
+  max-width: 60%;
+}
+
+.InfoBox {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  /* border-radius: 5px; */
+  color: #fff;
+
+  /*hidden by default */
+  display: block;
+
+  /*transition for smooth animation */
+  transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+
+  /*initial values for opacity and scale to create the effect */
+  opacity: 0;
+  transform: scale(0.8);
+}
+/* when the container is hovered, display the hidden component */
+.Card:hover .InfoBox {
+  display: block;
+  transform: scale(1);
+  opacity: 1;
+}
+.Card:hover {
+  /* goofy shadow */
+  /* box-shadow: 0.5em 0 0.3em rgb(43, 255, 0), -0.5em 0 0.3em rgb(1, 255, 255),
+    0 0.5em 0.3em rgb(255, 1, 1), 0 -0.5em 0.3em rgb(39, 1, 255); */
+  transform: scale(1.09);
+  box-shadow: 0px 0px 10px rgb(50, 250, 10);
+}
+
+.Status,
+.Species,
+.Gender,
+.Origin {
+  margin: 5px 0;
 }

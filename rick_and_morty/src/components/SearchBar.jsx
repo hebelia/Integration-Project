@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import '../components-css/SearchBar.css';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, randomize }) => {
   //create the state with its modifier and initialise it as empty string
   const [id, setId] = useState("");
 
@@ -11,10 +11,14 @@ const SearchBar = ({ onSearch }) => {
     // update the "id" state with the value entered by the user
     setId(e.target.value);
   };
-  // handle the click event when the "Add" button is clicked
+  // handle the click event when the "add" button is clicked
   const handleSearchClick = () => {
-    // call the "onSearch" prop with the desired "id"
+    // call the "onSearch" prop with the"id"
     onSearch(id);
+  };
+  //handle the click event when the randomize button is clicked
+  const handleRandomizeClick = () => {
+    randomize();
   };
 
   return (
@@ -22,8 +26,11 @@ const SearchBar = ({ onSearch }) => {
       <input 
       type="search" 
       value={id} 
-      onChange={handleChange} />
+      onChange={handleChange}
+      placeholder="Enter character ID..." 
+      />
       <button onClick={handleSearchClick}> Add new character! </button>
+      <button className="randomize" onClick={handleRandomizeClick}> Generate Random Character </button>
     </div>
   );
 };

@@ -63,6 +63,7 @@ function App() {
     //if the generated id is now shown it returns it
     return randomID;
   };
+  
   // randomize function that will be given by props to the button on the nav component
   const randomize = () => {
     let randomID = generateRandomCharacter();

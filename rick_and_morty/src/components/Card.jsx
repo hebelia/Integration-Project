@@ -1,17 +1,24 @@
-import React from 'react';
-import '../components-css/Card.css';
+import React from "react";
+import "../components-css/Card.css";
 
 function Card(props) {
   return (
     <div className="Card">
-      <button onClick={() =>props.onClose(props.id)}> x </button>
-      <h2>{props.name}</h2>
-      <h2>{props.status}</h2>
-      <h2>{props.species}</h2>
-      <h2>{props.gender}</h2>
-      <h2>{props.origin.name}</h2>
-      <img src={props.image} alt="" className='img'/>
-      
+      <div className="Top">
+        <button className="CloseCard" onClick={() => props.onClose(props.id)}>
+          {" "}
+          ✕{" "}
+        </button>
+        <h2 className="Name">{props.name}</h2>
+      </div>
+
+      <div className="InfoBox">
+        <h2 className="Status">▷ {props.status}</h2>
+        <h2 className="Species">▷ {props.species}</h2>
+        <h2 className="Gender">▷ {props.gender}</h2>
+        <h2 className="Origin">▷ {props.origin.name}</h2>
+      </div>
+      <img src={props.image} alt="" className="img" />
     </div>
   );
 }

@@ -1,7 +1,11 @@
-/* Cards.css */
 .Cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
+
+.Card {
+  margin: 20px;
+}
+
+
