@@ -8,13 +8,13 @@
 .SearchBar input[type="search"] {
   font-family: Consolas, monaco, monospace;
   padding: 8px;
-  border: 1px solid green;
+  border: 1px solid rgb(2, 190, 2);
   background-color: black;
   color: white;
   border-radius: 4px;
   font-size: 16px;
-  box-shadow: 0 0 5px green;
-  caret-color: green;
+  box-shadow: 0 0 5px rgb(2, 190, 2);
+  caret-color: rgb(2, 190, 2);
   /* max-width: fit-content; */
   margin-left: 10px;
   margin-top: 5px;
@@ -22,8 +22,9 @@
 
 .SearchBar button {
   font-family: Consolas, monaco, monospace;
+  font-weight: bold;
   background-color: rgba(0, 0, 0, 0.6);
-  color: green;
+  color: rgb(2, 190, 2);
   border: solid 1px;
   border-radius: 4em;
   padding: 8px 16px;
