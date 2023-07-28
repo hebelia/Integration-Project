@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "../components-css/SearchBar.css";
+import "./SearchBar.css";
 
 const SearchBar = ({ onSearch, randomize }) => {
   //create the state with its modifier and initialise it as empty string

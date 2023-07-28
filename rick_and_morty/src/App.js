@@ -2,23 +2,30 @@
 import "./App.css";
 //components
 import Cards from "./components/Cards/Cards.jsx";
-import Nav from "./components/Nav.jsx";
-import Detail from "./components/Detail";
-import Form from "./components/Form";
-import Error from "./components/Error";
-import About from "./components/About";
+import Nav from "./components/Nav/Nav.jsx";
+import Detail from "./components/Detail/Detail";
+import Form from "./components/Form/Form";
+import Error from "./components/Error/Error";
+import About from "./components/About/About";
 //dependencies
-import { Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
 
+import axios from "axios";
+import { useState, useEffect } from "react";
+import {
+  NavLink,
+  useLocation,
+  Routes,
+  Route,
+  useNavigate,
+} from "react-router-dom";
 
 function App() {
   //using hooks that we imported from react
   //determine the local state and its modifier, initialize it on an empty array
   const [characters, setCharacters] = useState([]);
+
+  //pathname to hide nav
+  const { pathname } = useLocation();
 
   //API CONNECTION - promise
   const onSearch = (id) => {
@@ -77,10 +84,16 @@ function App() {
 
   return (
     <div className="App">
-      <Nav onSearch={onSearch} randomize={randomize} characters={characters} />
+      {pathname !== "/" && (
+        <Nav
+          onSearch={onSearch}
+          randomize={randomize}
+          characters={characters}
+        />
+      )}
 
       <Routes>
-        {/* <Route path="/" element={<Form />} /> */}
+        {/* <Route path="/" element={<Form login={login}/>} /> */}
         <Route
           path="/home"
           element={<Cards characters={characters} onClose={onClose} />}

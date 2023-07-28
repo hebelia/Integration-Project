@@ -1,6 +1,6 @@
 import React from "react";
 import "./Cards.css";
-import Card from "../Card";
+import Card from "../Card/Card";
 
 function Cards({ characters, onClose }) {
   return (

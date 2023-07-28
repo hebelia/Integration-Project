@@ -1,6 +1,6 @@
 import React from "react"; // import React when using JSX.
-import SearchBar from "./SearchBar.jsx";
-import "../components-css/Nav.css";
+import SearchBar from "../SearchBar/SearchBar.jsx";
+import "./Nav.css";
 import { NavLink } from "react-router-dom";
 
 function Nav({ onSearch, randomize }) {
