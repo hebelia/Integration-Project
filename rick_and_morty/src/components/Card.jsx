@@ -1,5 +1,6 @@
 import React from "react";
 import "../components-css/Card.css";
+import { NavLink } from "react-router-dom";
 
 function Card(props) {
   return (
@@ -9,14 +10,18 @@ function Card(props) {
           {" "}
           ✕{" "}
         </button>
-        <h2 className="Name">{props.name}</h2>
+
+        {/* nav link to the details/add style when hovering */}
+        <NavLink to={`/detail/${props.id}/`}>
+          <h2 className="Name">{props.name}</h2>
+        </NavLink>
       </div>
 
       <div className="InfoBox">
         <h2 className="Status">▷ {props.status}</h2>
         <h2 className="Species">▷ {props.species}</h2>
         <h2 className="Gender">▷ {props.gender}</h2>
-        <h2 className="Origin">▷ {props.origin.name}</h2>
+        <h2 className="Origin">▷ {props.origin?.name}</h2>
       </div>
       <img src={props.image} alt="" className="img" />
     </div>

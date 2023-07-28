@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import '../components-css/SearchBar.css';
+import "../components-css/SearchBar.css";
 
 const SearchBar = ({ onSearch, randomize }) => {
   //create the state with its modifier and initialise it as empty string
@@ -23,14 +23,21 @@ const SearchBar = ({ onSearch, randomize }) => {
 
   return (
     <div className="SearchBar">
-      <input 
-      type="search" 
-      value={id} 
-      onChange={handleChange}
-      placeholder="Enter character ID..." 
+      <input
+        type="search"
+        value={id}
+        onChange={handleChange}
+        placeholder="Enter character ID..."
       />
       <button onClick={handleSearchClick}> Add new character! </button>
-      <button className="randomize" onClick={handleRandomizeClick}> Generate Random Character </button>
+
+      {/* randomize button that recieves by props the function randomize and executes it */}
+
+      {/* NOTE: change the icon later */}
+      <button className="randomize" onClick={handleRandomizeClick}>
+        {" "}
+        Generate Random Character{" "}
+      </button>
     </div>
   );
 };

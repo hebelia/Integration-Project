@@ -1,22 +1,27 @@
+//style
 import "./App.css";
-import Cards from "./components/Cards.jsx";
+//components
+import Cards from "./components/Cards/Cards.jsx";
 import Nav from "./components/Nav.jsx";
+import Detail from "./components/Detail";
+import Form from "./components/Form";
+import Error from "./components/Error";
+import About from "./components/About";
+//dependencies
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+
 
 function App() {
   //using hooks that we imported from react
   //determine the local state and its modifier, initialize it on an empty array
   const [characters, setCharacters] = useState([]);
 
-  //previous onSearch function
-  //   const onSearch = () => {
-  //     // i use the spread operator to create a new array with the existing characters and the new example character
-  //     setCharacters([...characters, example]);
-  //   };
-
   //API CONNECTION - promise
-  function onSearch(id) {
+  const onSearch = (id) => {
     //parse the id to int because we recieve a string
     let parsedID = parseInt(id, 10);
     //we check if the character exists in the local state of characters
@@ -38,7 +43,7 @@ function App() {
         }
       }
     );
-  }
+  };
 
   //onClose function
   const onClose = (id) => {
@@ -63,7 +68,7 @@ function App() {
     //if the generated id is now shown it returns it
     return randomID;
   };
-  
+
   // randomize function that will be given by props to the button on the nav component
   const randomize = () => {
     let randomID = generateRandomCharacter();
@@ -73,9 +78,22 @@ function App() {
   return (
     <div className="App">
       <Nav onSearch={onSearch} randomize={randomize} characters={characters} />
-      <Cards characters={characters} onClose={onClose} />
+
+      <Routes>
+        {/* <Route path="/" element={<Form />} /> */}
+        <Route
+          path="/home"
+          element={<Cards characters={characters} onClose={onClose} />}
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/detail/:id" element={<Detail />} />
+        {/* NOTE: REMOVE NAV PATH ON ERROR COMPONENT - ADD LINK TO HOME PAGE */}
+        <Route component={<Error />} />
+      </Routes>
     </div>
   );
 }
 
 export default App;
+
+//DESKTOP INTEGRATION PROJECT

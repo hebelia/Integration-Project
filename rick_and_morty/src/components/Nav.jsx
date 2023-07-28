@@ -1,6 +1,7 @@
 import React from "react"; // import React when using JSX.
 import SearchBar from "./SearchBar.jsx";
 import "../components-css/Nav.css";
+import { NavLink } from "react-router-dom";
 
 function Nav({ onSearch, randomize }) {
   const handleSearch = (characterID) => {
@@ -10,11 +11,14 @@ function Nav({ onSearch, randomize }) {
 
   return (
     <div className="Nav">
-      <SearchBar onSearch={handleSearch} randomize={randomize}/>
-      {/* randomize button that recieves by props the function randomize and executes it */}
-      
-      {/* NOTE: change the icon later */}
-      {/* <button className="randomize" onClick={randomize}> Generate Random Character </button> */}
+      {/* NOTE: ask if thehome and about buttons can be moved to the search bar */}
+      <button>
+        <NavLink to="/home">Home</NavLink>
+      </button>
+      <button>
+        <NavLink to="/about">About</NavLink>
+      </button>
+      <SearchBar onSearch={handleSearch} randomize={randomize} />
     </div>
   );
 }
