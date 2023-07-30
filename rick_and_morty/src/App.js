@@ -9,7 +9,7 @@ import Error from "./components/Error/Error";
 import About from "./components/About/About";
 //dependencies
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useParams } from "react";
 import {
   NavLink,
   useLocation,
@@ -18,7 +18,12 @@ import {
   useNavigate,
 } from "react-router-dom";
 //constants import
-import {EMAIL, PASSWORD, URL, API_KEY} from "./components/Config/constants.js";
+import {
+  EMAIL,
+  PASSWORD,
+  URL,
+  API_KEY,
+} from "./components/Config/constants.js";
 
 function App() {
   //using hooks that we imported from react
@@ -38,11 +43,22 @@ function App() {
     }
   };
   //state handler for access state -  navigates the user back to login form when the access state resets to false
-  useEffect(() => {
-    !access && navigate('/');	
-  },
-  //dependency array -  ensures that the effect is only triggered when the access state changes
-  [access]);
+  useEffect(
+    () => {
+      !access && navigate("/");
+    },
+    //dependency array -  ensures that the effect is only triggered when the access state changes
+    [access]
+  );
+
+  //logout function
+  const logout = () => {
+    setAccess(false);
+    // remove authentication status
+    localStorage.removeItem("isAuthenticated"); 
+    // redirects to the login page
+    navigate("/"); 
+  };
 
   //API CONNECTION - promise
   const onSearch = (id) => {
@@ -58,15 +74,13 @@ function App() {
       return;
     }
 
-    axios(`${URL}/${id}?${API_KEY}`).then(
-      ({ data }) => {
-        if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
-        } else {
-          window.alert("There are no characters for that ID!");
-        }
+    axios(`${URL}/${id}?${API_KEY}`).then(({ data }) => {
+      if (data.name) {
+        setCharacters((oldChars) => [...oldChars, data]);
+      } else {
+        window.alert("There are no characters for that ID!");
       }
-    );
+    });
   };
 
   //onClose function
@@ -99,6 +113,10 @@ function App() {
     onSearch(randomID);
   };
 
+
+
+
+
   return (
     <div className="App">
       {/* rendering the Nav component conditionally */}
@@ -107,6 +125,7 @@ function App() {
           onSearch={onSearch}
           randomize={randomize}
           characters={characters}
+          logout={logout}
         />
       )}
 
@@ -119,7 +138,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/detail/:id" element={<Detail />} />
         {/* NOTE: REMOVE NAV PATH ON ERROR COMPONENT - ADD LINK TO HOME PAGE */}
-        <Route component={<Error />} />
+        {/* NOTE: FIX redirecting to login when unknown route */}
+        <Route path="/*" component={<Error />} />
       </Routes>
     </div>
   );

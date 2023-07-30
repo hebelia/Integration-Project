@@ -1,15 +1,26 @@
-//import css
 
-// haz que este componente se muestre cada vez que el usuario ingrese a cualquier otra ruta que no exista. Es decir que no la hayas especificado en esta homework. Por ejemplo, si creaste una ruta "/home" y "/about", y el usuario en el navegador escribe y "/henry", debería mostrar el componente Error 404.
 import "./Error.css";
-
-import React from "react"; // import React when using JSX.
-
-
+import { useParams , useNavigate,  NavLink } from "react-router-dom";
+import React, { useEffect } from "react"; // import React when using JSX.
 // import SearchBar from "../SearchBar/SearchBar";
-import { NavLink } from "react-router-dom";
 
-function Error() {
-  return <div> ERROR PAGE </div>;
-}
+
+
+const Error = () => {
+  // Get the current path using useParams
+  const { "*": path } = useParams();
+  // Navigate back to the root path if the path is not found
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/");
+  }, [navigate]);
+
+  return (
+    <div>
+      <h1>404 - Not Found</h1>
+      <p>The path "{path}" is not a valid route.</p>
+    </div>
+  );
+};
+
 export default Error;

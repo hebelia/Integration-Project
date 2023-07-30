@@ -3,9 +3,9 @@ import SearchBar from "../SearchBar/SearchBar.jsx";
 import "./Nav.css";
 import { NavLink } from "react-router-dom";
 
-function Nav({ onSearch, randomize }) {
+function Nav({ onSearch, randomize, logout }) {
   const handleSearch = (characterID) => {
-    // call the "onSearch" function from the parent component (App.js)
+    // call the onSearch function
     onSearch(characterID);
   };
 
@@ -18,7 +18,9 @@ function Nav({ onSearch, randomize }) {
       <button>
         <NavLink to="/about">About</NavLink>
       </button>
+      <button onClick={logout}>Log out</button>
       <SearchBar onSearch={handleSearch} randomize={randomize} />
+      
     </div>
   );
 }
