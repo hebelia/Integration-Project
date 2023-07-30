@@ -8,7 +8,6 @@ import Form from "./components/Form/Form";
 import Error from "./components/Error/Error";
 import About from "./components/About/About";
 //dependencies
-
 import axios from "axios";
 import { useState, useEffect } from "react";
 import {
@@ -18,14 +17,32 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
+//constants import
+import {EMAIL, PASSWORD, URL, API_KEY} from "./components/Config/constants.js";
 
 function App() {
   //using hooks that we imported from react
   //determine the local state and its modifier, initialize it on an empty array
   const [characters, setCharacters] = useState([]);
-
   //pathname to hide nav
   const { pathname } = useLocation();
+  //
+  const navigate = useNavigate();
+  //
+  const [access, setAccess] = useState(false);
+  //login function to send by props to the login form component
+  const login = (userData) => {
+    if (userData.password === PASSWORD && userData.email === EMAIL) {
+      setAccess(true);
+      navigate("/home");
+    }
+  };
+  //state handler for access state -  navigates the user back to login form when the access state resets to false
+  useEffect(() => {
+    !access && navigate('/');	
+  },
+  //dependency array -  ensures that the effect is only triggered when the access state changes
+  [access]);
 
   //API CONNECTION - promise
   const onSearch = (id) => {
@@ -41,7 +58,7 @@ function App() {
       return;
     }
 
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
+    axios(`${URL}/${id}?${API_KEY}`).then(
       ({ data }) => {
         if (data.name) {
           setCharacters((oldChars) => [...oldChars, data]);
@@ -84,6 +101,7 @@ function App() {
 
   return (
     <div className="App">
+      {/* rendering the Nav component conditionally */}
       {pathname !== "/" && (
         <Nav
           onSearch={onSearch}
@@ -93,7 +111,7 @@ function App() {
       )}
 
       <Routes>
-        {/* <Route path="/" element={<Form login={login}/>} /> */}
+        <Route path="/" element={<Form login={login} />} />
         <Route
           path="/home"
           element={<Cards characters={characters} onClose={onClose} />}
