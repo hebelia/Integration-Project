@@ -1,7 +1,6 @@
 # Integration-Project
  First integration project where we put into practice all the knowledge obtained within module two of SoyHenry Academy.
 
+## Work in progress 🛠
 
 
-
-# GO TO RICK AND MORTY AND  -> NPM START
