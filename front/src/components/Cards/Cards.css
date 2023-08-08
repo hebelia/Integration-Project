@@ -1,0 +1,10 @@
+.Cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.Card {
+  margin: 20px;
+}

@@ -1,0 +1,68 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  color: white;
+  border: solid white;
+  width: 80%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #2bff0000;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(43, 255, 0, 0.486);
+}
+
+form label {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.form input[type="text"],
+.form input[type="password"] {
+  font-family: Consolas, monaco, monospace;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  border-radius: 4px;
+  font-size: 16px;
+  box-shadow: 0 0 5px rgb(2, 190, 2);
+  caret-color: rgb(2, 190, 2);
+  margin-left: 10px;
+  margin-top: 5px;
+  width: 100%;
+  max-width: 95%;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form button {
+  font-family: Consolas, monaco, monospace;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: rgb(2, 190, 2);
+  border: solid 1px;
+  border-radius: 4em;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  padding: 10px;
+}
+
+.form button:hover {
+  background-color: #0057b300;
+  box-shadow: 0px 0px 5px white;
+  color: white;
+}
+
+/* media query for responsiveness */
+@media (max-width: 768px) {
+  form {
+    width: 90%;
+  }
+}
