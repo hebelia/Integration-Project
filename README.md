@@ -1,5 +1,5 @@
 <div align="center">
-<img src="/public/media/readme-icon.png" alt="icon">
+<img src="./front/public/media/readme-icon.png" alt="icon" height="200">
 </div>
 <a id="readme-top"></a>
 <!-- PROJECT SHIELDS -->
@@ -21,7 +21,7 @@ I'm using markdown "reference style" links for readability.
 <br />
 <div align="center">
   <a href="https://github.com/hebelia/Integration-Project">
-    <img src="/public/media/favicon.ico" alt="icon" width="80" height="80">  
+    <img src="./front/public/media/favicon.ico" alt="icon" width="80" height="80">  
     <img src="https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png" height="80"alt="logo">
   </a>
 
@@ -152,47 +152,47 @@ The goals of this project are to:
 <details>
   <summary> <a> Login :mag_right: </a></summary>
 
-![visualization](/public/media/3.png)
+![visualization](./front/public/media/3.png)
 
 </details>
 <details>
   <summary> <a> Login mobile :mag_right: </a></summary>
 
-![visualization](/public/media/mobile-login.png)
+![visualization](./front/public/media/mobile-login.png)
 
 </details>
 <details>
   <summary> <a> Home :mag_right: </a></summary>
 
-![visualization](/public/media/preview-2.png)
+![visualization](./front/public/media/preview-2.png)
 
 </details>
 <details>
   <summary> <a> Home mobile :mag_right: </a></summary>
 
-![visualization](/public/media/mobile-3.png)
+![visualization](./front/public/media/mobile-3.png)
 
 </details>
 <details>
   <summary> <a> Character details :mag_right: </a></summary>
 
-![visualization](/public/media/1.png)
+![visualization](./front/public/media/1.png)
 
 </details>
 <details>
   <summary> <a> Character details mobile :mag_right: </a></summary>
 
-![visualization](/public/media/mobile-4.png)
+![visualization](./front/public/media/mobile-4.png)
 
 </details>
 <details>
   <summary> <a> About :mag_right: </a></summary>
 
-![visualization](/public/media/2.png)
+![visualization](./front/public/media/2.png)
 
 </details>
 <div align="center">
-    <img src="/public/media/login-img2.png" alt="icon" width="80" height="80">
+    <img src="./front/public/media/login-img2.png" alt="icon"  height="300">
 </div>
 
 <br />
@@ -306,7 +306,7 @@ Suggestions: [⋄ click here ⋄](https://github.com/hebelia/Integration-Project
 <div align="left">
   <a href="https://linkedin.com/in/hebeliaromeu" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="hebeliaromeu" height="45" width="45" /></a>
   <a href="https://instagram.com/hebe.lia" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="hebe.lia" height="45" width="45" /></a>
-  <a href="mailto:hebeliaromeu@gmail.com"><img align="center" src="/public/media/mail.svg" alt="Email Me" height="50" width="45"></a>
+  <a href="mailto:hebeliaromeu@gmail.com"><img align="center" src="./front/public/media/mail.svg" alt="Email Me" height="50" width="45"></a>
   <a href="https://codepen.io/hebelia" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/codepen.svg" alt="hebelia" height="45" width="45" /></a>
 </div>
 <p align="right">(<a href="#readme-top"> △ </a>)</p>
@@ -351,7 +351,7 @@ Suggestions: [⋄ click here ⋄](https://github.com/hebelia/Integration-Project
 
 <!-- IMAGES & MEDIA -->
 
-<!-- [product-screenshot]: /front/public/media/preview-1.png.png
+<!-- [product-screenshot]:./front/public/media/preview-1.png.png
 
 [portfolio-pc]:
 [portfolio-mobile]:
