@@ -1,3 +1,28 @@
-.About{
-    color: white;
+.About {
+  color: white;
+  height: 100vh;
+  display: flex;
+}
+.about-text {
+  padding-left: 1em;
+  padding-right: 1em;
+  justify-content: center;
+  text-shadow: none;
+}
+
+.Info h3 {
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 5px;
+}
+
+.about-img {
+  max-width: fit-content;
+}
+
+@media screen and (min-width: 768px) {
+  .about-img {
+    max-width: 50%;
+  }
+
 }

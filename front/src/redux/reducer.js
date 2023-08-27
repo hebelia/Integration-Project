@@ -9,20 +9,30 @@ const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FAV:
       //we copy all the state and to the property myFav we create a another copy of the state of myfav but with the addition from payload
+      // return {
+      //   ...state,
+      //   myFavorites: [...state.allCharactersFav, action.payload],
+      //   allCharactersFav: [...state.allCharactersFav, action.payload],
+      // };
       return {
         ...state,
-        myFavorites: [...state.allCharactersFav, action.payload],
-        allCharactersFav: [...state.allCharactersFav, action.payload],
+        myFavorites: action.payload,
+        allCharactersFav: action.payload,
       };
     case REMOVE_FAV:
       //use the filter property to instead remove the payload from the state
+      // return {
+      //   ...state,
+      //   myFavorites: [
+      //     ...state.myFavorites.filter(
+      //       (char) => char.id !== parseInt(action.payload)
+      //     ),
+      //   ],
+      // };
       return {
         ...state,
-        myFavorites: [
-          ...state.myFavorites.filter(
-            (char) => char.id !== parseInt(action.payload)
-          ),
-        ],
+        myFavorites: action.payload,
+        allCharactersFav: action.payload,
       };
 
     case FILTER:

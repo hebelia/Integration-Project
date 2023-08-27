@@ -37,12 +37,33 @@ function App() {
   //
   const [access, setAccess] = useState(false);
   //login function to send by props to the login form component
-  const login = (userData) => {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      navigate("/home");
+  //previous function
+  // const login = (userData) => {
+  //   if (userData.password === PASSWORD && userData.email === EMAIL) {
+  //     setAccess(true);
+  //     navigate("/home");
+  //   }
+  // };
+
+  //async login function
+  const login = async (userData) => {
+    try {
+
+      const { email, password } = userData;
+      const URL = "http://localhost:3001/rickandmorty/login/";
+      // sending data over query
+      const { data } = await axios(
+        URL + `?email=${email}&password=${password}`
+      );
+      const { access } = data;
+      setAccess(data);
+      access && navigate("/home");
+
+    } catch (error) {
+      console.error(error.message);
     }
   };
+
   //state handler for access state -  navigates the user back to login form when the access state resets to false
   useEffect(
     () => {
@@ -62,7 +83,8 @@ function App() {
   };
 
   //API CONNECTION - promise
-  const onSearch = (id) => {
+  // async function
+  const onSearch = async (id) => {
     //parse the id to int because we recieve a string
     let parsedID = parseInt(id, 10);
     //we check if the character exists in the local state of characters
@@ -74,14 +96,17 @@ function App() {
       window.alert("Oops! That character is already shown below!");
       return;
     }
-
-    axios(`${URL}/${id}?${API_KEY}`).then(({ data }) => {
+    //async function
+    try {
+      const { data } = await axios(`${URL}/${id}`);
       if (data.name) {
         setCharacters((oldChars) => [...oldChars, data]);
       } else {
         window.alert("There are no characters for that ID!");
       }
-    });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   //onClose function

@@ -15,7 +15,8 @@ const Detail = () => {
 
   // replace for the updated api request
   useEffect(() => {
-    axios(`${URL}/${id}?${API_KEY}`).then(({ data }) => {
+    //previous `${URL}/${id}?${API_KEY}`
+    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
       if (data.name) {
         setCharacter(data);
       } else {
@@ -41,12 +42,12 @@ const Detail = () => {
 
         {/* only chaining operator */}
         <div className="Info">
-          <h2 className="name-text">◇ Name: {character.name && character.name}</h2>
-          <h2>◇ Status: {character.status && character.status}</h2>
-          <h2>◇ Species: {character.species && character.species}</h2>
-          <h2>◇ Gender: {character.gender && character.gender}</h2>
+          <h2 className="name-text"><span>▻</span> Name: {character.name && character.name}</h2>
+          <h2 className="margin-h2">⋄ Status: {character.status && character.status}</h2>
+          <h2 className="margin-h2">⋄ Species: {character.species && character.species}</h2>
+          <h2 className="margin-h2">⋄ Gender: {character.gender && character.gender}</h2>
           {/* in this case it is not enough with the conditional and we have to use the chaining operator */}
-          <h2>◇ Origin: {character.origin?.name && character.origin.name}</h2>
+          <h2 className="margin-h2">⋄ Origin: {character.origin?.name && character.origin.name}</h2>
         </div>
       </div>
     </div>

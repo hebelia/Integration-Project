@@ -34,7 +34,7 @@ const Favorites = ({ myFavorites }) => {
 
   return (
     <div className="FavsTop">
-      <h2> 💚 Favorites List 💚 </h2>
+      <h2> <span>♡</span> Favorites List <span>♡</span> </h2>
       <div className="Selectors">
         <select onChange={handleOrder}>
           <option value="A">△ Ascending</option>
@@ -49,27 +49,38 @@ const Favorites = ({ myFavorites }) => {
         </select>
       </div>
 
-      <div className="Cards">
-        {
-          //checks myFavorites is not null or undefined
-          myFavorites.length &&
-            myFavorites.map((character) => (
-              // console.log(character),
-              // console.log(character.image),
-              <Card
-                key={character.id}
-                id={character.id}
-                name={character.name}
-                status={character.status}
-                species={character.species}
-                gender={character.gender}
-                origin={character.origin}
-                image={character.image}
-                onClose={character.onClose}
-              />
-            ))
-        }
-      </div>
+      {/* ternary operator to determine whether to render the cards or the message  */}
+
+      {myFavorites.length === 0 ? (
+        <div className="NoFavoritesMessage">Oops... Looks like you have not added any favorites yet!</div>
+      ) : (
+        <div className="Cards">
+          {
+            //checks myFavorites is not null or undefined
+            myFavorites.length &&
+              myFavorites.map(
+                (character) => (
+                  console.log(character),
+                  (
+                    <Card
+                      key={character.id}
+                      id={character.id}
+                      name={character.name}
+                      status={character.status}
+                      species={character.species}
+                      gender={character.gender}
+                      origin={character.origin}
+                      image={character.image}
+                      onClose={character.onClose}
+                      //to fix the onClose function issue i send a prop to the card which only exists when the component is on the Favorites page
+                      isFavoritesRoute={true}
+                    />
+                  )
+                )
+              )
+          }
+        </div>
+      )}
     </div>
   );
 };

@@ -87,6 +87,11 @@ NavLink:hover {
   .Nav input[type="search"] {
     margin-bottom: 10px;
   }
+  .buttonsContainer{
+    flex-direction: column-reverse;
+    align-items: center;
+
+  }
 }
 
 

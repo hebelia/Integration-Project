@@ -48,6 +48,39 @@ select option {
 }
 
 
+.NoFavoritesMessage {
+  font-size: 24px;
+  color: #77ff6b;
+  text-align: center;
+  padding: 20px;
+  background-color: #00000000;
+  border-radius: 10px;
+
+  cursor: pointer;
+  animation: pulsate 3s infinite;
+padding: 2em;
+  
+}
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    color: transparent;
+  }
+  50% {
+    transform: scale(1.1);
+    color: #f6f6f688;
+  }
+  100% {
+    transform: scale(1);
+    color: transparent;
+  }
+}
+.FavsTop span{
+  color: #15ff00;
+  text-shadow: 0 0 5px rgb(2, 190, 2);
+  font-size: 30px;
+}
+
 
 
 

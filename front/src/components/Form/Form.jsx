@@ -28,6 +28,7 @@ function Form({ login }) {
 
   return (
     <div className="form-container">
+      
       <form className="form">
         {/* Your form inputs and elements go here */}
         <label htmlFor="email">Email </label>
@@ -64,6 +65,7 @@ function Form({ login }) {
           SUBMIT
         </button>
       </form>
+      <img src="/public/media/login-img2.png"></img>
     </div>
   );
 }

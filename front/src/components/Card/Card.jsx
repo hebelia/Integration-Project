@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { addFavorite, removeFavorite } from "../../redux/actions";
 
-function Card(props) {
+const Card = (props) => {
   //we create a isFav state with its setter function
   const [isFav, setIsFav] = useState(false);
   //conditionals
@@ -29,6 +29,7 @@ function Card(props) {
         gender: props.gender,
         origin: props.origin,
         image: props.image,
+        onClose: props.onClose,
       });
     }
   };
@@ -45,16 +46,11 @@ function Card(props) {
   return (
     <div className="Card">
       <div className="Top">
-        <button className="CloseCard" onClick={() => props.onClose(props.id)}>
-          {" "}
-          ✕{" "}
-        </button>
-        {/* nav link to the details/add style when hovering */}
+        {/* only visible on hover Name */}
         <NavLink to={`/detail/${props.id}/`}>
-          <h2 className="Name">{props.name}</h2>
+          <div className="HoverContent">{props.name}</div>
         </NavLink>
-        {/* NOTE: FIX CSS */}
-        <div className="Top">
+        <div className="Buttons">
           {/* conditional rendering of fav button */}
           {isFav ? (
             <button className="CloseCard" onClick={handleFavorite}>
@@ -65,19 +61,38 @@ function Card(props) {
               🤍
             </button>
           )}
+
+          {/* conditional rendering on the close button when placed on the /favorites route */}
+          {props.isFavoritesRoute ? null : (
+            <button
+              className="CloseCard"
+              onClick={() => props.onClose(props.id)}
+            >
+              ✕
+            </button>
+          )}
         </div>
       </div>
+      {/* card information : character NAME + INFO BOX */}
+      <div className="CardInfo">
+        {/* nav link to the details/add style when hovering */}
 
-      <div className="InfoBox">
-        <h2 className="Status">▷ {props.status}</h2>
-        <h2 className="Species">▷ {props.species}</h2>
-        <h2 className="Gender">▷ {props.gender}</h2>
-        <h2 className="Origin">▷ {props.origin?.name}</h2>
+        <NavLink to={`/detail/${props.id}/`}>
+          <div className="Name">{props.name}</div>
+        </NavLink>
+
+        <div className="InfoBox">
+          <h2 className="Status">▷ {props.status}</h2>
+          <h2 className="Species">▷ {props.species}</h2>
+          <h2 className="Gender">▷ {props.gender}</h2>
+          <h2 className="Origin">▷ {props.origin?.name}</h2>
+        </div>
+        <img src={props?.image} alt="" className="img" />
       </div>
-      <img src={props?.image} alt="" className="img" />
+      {/* end card info----- */}
     </div>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   return {
